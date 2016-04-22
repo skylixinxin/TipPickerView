@@ -155,6 +155,7 @@ public class TipPickerView extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        super.onTouchEvent(event);
         switch (event.getActionMasked()) {
             case MotionEvent.ACTION_DOWN:
                 isTounch = true;
@@ -184,12 +185,13 @@ public class TipPickerView extends View {
             // 往下滑超过离开距离
             currentSelect++;
             mMoveLen = mMoveLen - mItemHeight;
+            mLastDownY = event.getY();
         } else if (mMoveLen < -mItemHeight / 2 && currentSelect > 0) {
             // 往上滑超过离开距离
             currentSelect--;
             mMoveLen = mMoveLen + mItemHeight;
+            mLastDownY = event.getY();
         }
-        mLastDownY = event.getY();
         invalidate();
     }
 
