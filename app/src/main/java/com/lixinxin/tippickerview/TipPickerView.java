@@ -22,17 +22,17 @@ public class TipPickerView extends View {
 
     private int mState = STATE_EVENT_NONE;
 
-    private int mItemHeight;
-    private int mSelectRadius;
-    private int mItemWidth;
-    private int mTextSize;
-    private int mTipRadius;
-    private int mTipMargin;
-    private int mViewHeight;
-    private int mPadding;
-    private int mColorText = 0x666666;
-    private int mColorShader = 0x999999;
-    private int mColorCirclr = 0xff8170;
+    private int mItemHeight; //每一个Item的高度
+    private int mSelectRadius; //选中的圆的半径
+    private int mItemWidth; //每一个Item的宽度
+    private int mTextSize; //字号
+    private int mTipRadius; //旁边提示圆的半径
+    private int mTipMargin; //提示圆和List之间的间距
+    private int mViewHeight; //整个View的高度
+    private int mPadding; //List的上边距
+    private int mColorText = 0x666666; //字体颜色
+    private int mColorShader = 0x999999; //List背景色
+    private int mColorCirclr = 0xff8170; //选中圆以及提示圆背景色
     private Context mContext;
 
     /**
@@ -44,7 +44,6 @@ public class TipPickerView extends View {
      * 自动回滚到中间的速度
      */
     private static final float SPEED = 2;
-    private long time;
 
     private final Paint textPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private final Paint colorPaint = new Paint();
@@ -98,13 +97,7 @@ public class TipPickerView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        switch (mState) {
-            case STATE_EVENT_NONE:
-                drawData(canvas);
-                break;
-            case STATE_EVENT_MOVE:
-                break;
-        }
+        drawData(canvas);
     }
 
     private void drawData(Canvas canvas) {
